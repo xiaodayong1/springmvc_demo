@@ -2,6 +2,7 @@ package com.lagou.edu.service.impl;
 
 import com.lagou.edu.dao.AccountDao;
 import com.lagou.edu.dao.impl.JdbcAccountDaoImpl;
+import com.lagou.edu.factory.BeanFactory;
 import com.lagou.edu.pojo.Account;
 import com.lagou.edu.service.TransferService;
 
@@ -10,7 +11,13 @@ import com.lagou.edu.service.TransferService;
  */
 public class TransferServiceImpl implements TransferService {
 
-    private AccountDao accountDao = new JdbcAccountDaoImpl();
+    //private AccountDao accountDao = new JdbcAccountDaoImpl();
+
+    private AccountDao accountDao;
+
+    public void setAccountDao(AccountDao accountDao){
+        this.accountDao=accountDao;
+    }
 
     public void transfer(String fromCardNo, String toCardNo, int money) throws Exception {
 

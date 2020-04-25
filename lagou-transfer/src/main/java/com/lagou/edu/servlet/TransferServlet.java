@@ -1,9 +1,10 @@
 package com.lagou.edu.servlet;
 
+import com.lagou.edu.factory.BeanFactory;
+import com.lagou.edu.service.TransferService;
 import com.lagou.edu.service.impl.TransferServiceImpl;
 import com.lagou.edu.utils.JsonUtils;
 import com.lagou.edu.pojo.Result;
-import com.lagou.edu.service.TransferService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,7 +20,9 @@ import java.io.IOException;
 public class TransferServlet extends HttpServlet {
 
 
-     private TransferService transferService = new TransferServiceImpl();
+    //private TransferService transferService = new TransferServiceImpl();
+
+    private TransferService transferService= (TransferService) BeanFactory.getBean("transferService");
 
 
     @Override

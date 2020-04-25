@@ -1,0 +1,8 @@
+手写实现ioc
+1.ioc可解耦系统，减少new方法
+编写bean.xml,然后在beanfactory中编写方法对xml进行解析，利用反射技术生成对象类存放在map集合中
+然后提供一个获取的getbean静态方法供外部类调用，可达到不用new创建对象的目的，
+2.上述实现后会造成如下冗余
+    *****   private AccountDao accountDao=BeanFactory.getBean("accountDao");
+    可创建一个set方法进行set注入对象达到解耦的目的，将bean.xml中的bean标签绑定property字标签
+    然后绑定他调用的资源类，判断类中是否有名字是set+“name”的方法，有的话就进行依赖注入，同样利用了反射机制
