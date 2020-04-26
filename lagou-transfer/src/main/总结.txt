@@ -4,5 +4,14 @@
 然后提供一个获取的getbean静态方法供外部类调用，可达到不用new创建对象的目的，
 2.上述实现后会造成如下冗余
     *****   private AccountDao accountDao=BeanFactory.getBean("accountDao");
-    可创建一个set方法进行set注入对象达到解耦的目的，将bean.xml中的bean标签绑定property字标签
+    可创建一个set方法进行set注入对象达到解耦的目的，将bean.xml中的bean标签绑定property子标签
     然后绑定他调用的资源类，判断类中是否有名字是set+“name”的方法，有的话就进行依赖注入，同样利用了反射机制
+
+2 手动实现事务控制
+事务问题产生原因：两次修改操作是两个连接数据库的线程，彼此互不影响，造成事务问题，
+  建立ConnectionUtil，利用threadLocal的机制返回一个数据库连接，保证是操作的一个连接，
+  然后在service添加事务控制
+  开启事务：ConnectionUtils.getInstance().getCurrentThreadConn().setAutoCommit(false);---->本质为关闭自动提交
+  提交事务 ConnectionUtils.getInstance().getCurrentThreadConn().commit();
+  回滚事务 ConnectionUtils.getInstance().getCurrentThreadConn().rollback();
+建立一个TransactionManager进行事务封装事务操作  （单例）

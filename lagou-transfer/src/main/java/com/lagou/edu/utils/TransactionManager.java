@@ -1,14 +1,10 @@
-/*
 package com.lagou.edu.utils;
 
 import java.sql.SQLException;
 
-*/
-/**
- * @author 应癫
- *
- * 事务管理器类：负责手动事务的开启、提交、回滚
- *//*
+
+ //* 事务管理器类：负责手动事务的开启、提交、回滚
+
 
 public class TransactionManager {
 
@@ -18,8 +14,7 @@ public class TransactionManager {
         this.connectionUtils = connectionUtils;
     }
 
-    */
-/*private TransactionManager(){
+    private TransactionManager(){
 
     }
 
@@ -27,7 +22,7 @@ public class TransactionManager {
 
     public static TransactionManager getInstance() {
         return  transactionManager;
-    }*//*
+    }
 
 
 
@@ -49,4 +44,3 @@ public class TransactionManager {
         connectionUtils.getCurrentThreadConn().rollback();
     }
 }
-*/
