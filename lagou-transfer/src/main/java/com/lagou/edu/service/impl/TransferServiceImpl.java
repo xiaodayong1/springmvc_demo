@@ -27,7 +27,7 @@ public class TransferServiceImpl implements TransferService {
             //开启事务关闭自动提交
             //ConnectionUtils.getInstance().getCurrentThreadConn().setAutoCommit(false);
 
-            TransactionManager.getInstance().beginTransaction();
+            //TransactionManager.getInstance().beginTransaction();
 
             Account from = accountDao.queryAccountByCardNo(fromCardNo);
             Account to = accountDao.queryAccountByCardNo(toCardNo);
@@ -36,11 +36,11 @@ public class TransferServiceImpl implements TransferService {
             to.setMoney(to.getMoney()+money);
 
             accountDao.updateAccountByCardNo(to);
-            int c=1/0;
+            //int c=1/0;
             accountDao.updateAccountByCardNo(from);
 
             //提交事务
-            TransactionManager.getInstance().commit();
+            //TransactionManager.getInstance().commit();
 
         }catch (Exception e) {
 
@@ -48,7 +48,7 @@ public class TransferServiceImpl implements TransferService {
 
             //回滚事务
             //ConnectionUtils.getInstance().getCurrentThreadConn().rollback();
-            TransactionManager.getInstance().rollback();
+            //TransactionManager.getInstance().rollback();
             throw new RuntimeException("事务控制回滚报错");
         }
 

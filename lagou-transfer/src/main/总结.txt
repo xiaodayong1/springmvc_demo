@@ -15,3 +15,6 @@
   提交事务 ConnectionUtils.getInstance().getCurrentThreadConn().commit();
   回滚事务 ConnectionUtils.getInstance().getCurrentThreadConn().rollback();
 建立一个TransactionManager进行事务封装事务操作  （单例）
+
+3.利用动态代理实现aop技术，在service方法前后加上事务
+创建ProxyFactory然后返回代理对象，在invok方法添加代理对象的逻辑，然后调用代理对象进行业务会达到aop效果
